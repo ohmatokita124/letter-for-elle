@@ -1,0 +1,141 @@
+/* Typography */
+h1, p {
+    font-family: 'Hind', sans-serif;
+}
+
+p {
+    text-indent: 50px;
+}
+
+h1 {
+    font-weight: 200;
+}
+
+/* Body and Container Styling */
+body {
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Heart Styling */
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    transition: transform 2s;
+    z-index: 1;
+}
+
+.heart > img {
+    width: 50px;
+    height: auto;
+    transition: width 2s ease-in-out;
+}
+
+/* Heart Animation on Hover */
+.heart > img:hover {
+    animation: beat 2s ease-in-out infinite;
+}
+
+/* Message Styling */
+.message {
+    padding: 20px;
+    background-color: #eee;
+    min-width: 400px;
+    height: 75%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    overflow: hidden;
+    animation: openmsg 2s linear paused forwards;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+}
+
+/* Keyframes */
+@keyframes beat {
+    0%, 30%, 60%, 100% {
+        width: 50px;
+    }
+    25%, 75% {
+        width: 58px;
+    }
+    50% {
+        width: 45px;
+    }
+}
+
+@keyframes openmsg {
+    0% {
+        height: 0;
+        padding: 0 20px;
+    }
+    100% {
+        height: 75%;
+        padding: 20px;
+    }
+}
+
+@keyframes heartMove {
+    0% {
+        top: 50%;
+    }
+    100% {
+        top: 85%;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Animation Classes */
+.openNor, .closeNor {
+    animation-direction: normal;
+    animation-play-state: running;
+}
+
+.closeNor {
+    animation-direction: reverse;
+}
+
+.no-anim {
+    animation: none;
+}
+
+.closed {
+    height: 0;
+    padding: 0 20px;
+}
+
+.bottom {
+    bottom: 5px;
+}
+
+.openHer, .closeHer {
+    animation-name: heartMove;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-play-state: running;
+    animation-fill-mode: forwards;
+}
+
+.closeHer {
+    animation-direction: reverse;
+}
+
+.beating > img {
+    animation: beat 2s ease-in-out infinite;
+}
+
+.openedHer {
+    top: 85%;
+    transform: translate(-50%, 0);
+}
